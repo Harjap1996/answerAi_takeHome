@@ -9,6 +9,8 @@ import {
 } from "recharts";
 import CustomYAxisTick from "./CustomYAxisTick";
 import CustomXAxisTick from "./CustomXAxisTick";
+import Dropdown from "./Dropdown";
+import CustomTooltip from "./CustomTooltip";
 
 const data = [
   { name: "Apr", value: 20000 },
@@ -22,11 +24,8 @@ const data = [
 
 const Chart = () => (
   <div className="w-[761px] h-[449px] bg-[#222324] border border-[#525252] rounded-md p-6">
-    <div className="flex justify-between items-center mb-4">
-      <h2 className="text-xl font-semibold">Graphs</h2>
-      <select className="bg-[#222324] border border-[#525252] rounded-md text-white px-3 py-1">
-        <option>Unsatisfied Demand %</option>
-      </select>
+    <div className="flex justify-end mb-4">
+      <Dropdown />
     </div>
 
     <LineChart width={691} height={340} data={data}>
@@ -40,16 +39,12 @@ const Chart = () => (
           <rect x="0" y="0" width="4" height="8" fill="#333" />
         </pattern>
       </defs>
+
       <CartesianGrid stroke="#333" />
-      <XAxis dataKey="name" stroke="#aaa" tick={CustomXAxisTick} />{" "}
+      <XAxis dataKey="name" stroke="#aaa" tick={CustomXAxisTick} />
       <YAxis stroke="#aaa" tick={CustomYAxisTick} domain={["auto", "auto"]} />
-      <Tooltip
-        contentStyle={{
-          background: "#222324",
-          border: "1px solid #525252",
-          borderRadius: "8px",
-        }}
-      />
+      <Tooltip content={<CustomTooltip />} />
+
       <Area
         type="linear"
         dataKey="value"
