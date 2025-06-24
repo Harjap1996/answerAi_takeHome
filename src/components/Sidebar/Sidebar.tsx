@@ -1,15 +1,24 @@
-import { Home, BarChart3, Cloud, Settings } from "lucide-react";
+import { ClipboardList, CloudUpload, Settings } from "lucide-react";
+import {
+  HomeIcon,
+  BellIcon,
+  UserCircleIcon,
+  Bars3Icon,
+} from "@heroicons/react/24/solid";
 
 const Sidebar = () => (
-  <div className="w-16 bg-neutral-900 flex flex-col items-center py-4 space-y-6">
-    <div className="flex-1 flex flex-col justify-center space-y-6">
-      <Home className="w-6 h-6 text-white hover:text-lime-400 cursor-pointer" />
-      <BarChart3 className="w-6 h-6 text-white hover:text-lime-400 cursor-pointer" />
-      <Cloud className="w-6 h-6 text-white hover:text-lime-400 cursor-pointer" />
-      <Settings className="w-6 h-6 text-white hover:text-lime-400 cursor-pointer" />
+  <div className="w-20 h-screen bg-neutral-950 flex flex-col justify-between pt-8 pb-4 items-center">
+    <div className="flex flex-col items-center gap-10 w-8">
+      <Bars3Icon className="w-6 h-6 text-white hover:text-lime-400 cursor-pointer transition-colors" />
+      <HomeIcon className="w-6 h-6 text-white hover:text-lime-400 cursor-pointer transition-colors" />
+      <BellIcon className="w-6 h-6 text-neutral-500 hover:text-lime-400 cursor-pointer transition-colors" />
+      <ClipboardList className="w-6 h-6 text-neutral-500 hover:text-lime-400 cursor-pointer transition-colors" />
+      <CloudUpload className="w-6 h-6 text-neutral-500 hover:text-lime-400 cursor-pointer transition-colors" />
+      <Settings className="w-6 h-6 text-neutral-500 hover:text-lime-400 cursor-pointer transition-colors" />
     </div>
-    <div className="pb-4">
-      <div className="w-8 h-8 rounded-full bg-white" />
+
+    <div>
+      <UserCircleIcon className="w-8 h-8 text-white hover:text-lime-400 cursor-pointer transition-colors" />
     </div>
   </div>
 );
