@@ -31,4 +31,19 @@ const CustomTooltip = ({ active, payload }: any) => {
   );
 };
 
-export default CustomTooltip;
+const CustomCursor = ({ points }: any) => {
+  const { x } = points[0];
+  return (
+    <line
+      x1={x}
+      x2={x}
+      y1={0}
+      y2={340}
+      stroke="#C8E972"
+      strokeDasharray="4 4"
+      strokeWidth={2}
+    />
+  );
+};
+
+export { CustomTooltip, CustomCursor };
