@@ -10,7 +10,7 @@ import {
 import CustomYAxisTick from "./CustomYAxisTick";
 import CustomXAxisTick from "./CustomXAxisTick";
 import Dropdown from "./Dropdown";
-import CustomTooltip from "./CustomTooltip";
+import { CustomTooltip, CustomCursor } from "./CustomTooltip";
 
 const data = [
   { name: "Apr", value: 20000 },
@@ -43,7 +43,7 @@ const Chart = () => (
       <CartesianGrid stroke="#333" />
       <XAxis dataKey="name" stroke="#aaa" tick={CustomXAxisTick} />
       <YAxis stroke="#aaa" tick={CustomYAxisTick} domain={["auto", "auto"]} />
-      <Tooltip content={<CustomTooltip />} />
+      <Tooltip content={<CustomTooltip />} cursor={<CustomCursor />} />
 
       <Area
         type="linear"
@@ -59,7 +59,13 @@ const Chart = () => (
         stroke="#C8E972"
         strokeWidth={2}
         dot={{ r: 6, stroke: "#C8E972", strokeWidth: 3, fill: "#222324" }}
-        activeDot={{ r: 8 }}
+        activeDot={{
+          r: 8,
+          stroke: "#C8E972",
+          strokeWidth: 3,
+          fill: "#222324",
+          filter: "drop-shadow(0 0 4px #C8E972)",
+        }}
       />
     </LineChart>
   </div>
