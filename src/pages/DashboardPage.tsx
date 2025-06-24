@@ -1,8 +1,12 @@
 import Layout from "../components/Layout/Layout";
+import Chart from "../components/Chart/Chart";
 
 const DashboardPage = () => (
   <Layout>
-    <div></div>
+    <div>
+      {" "}
+      <Chart />
+    </div>
   </Layout>
 );
 
