@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Plus } from "lucide-react";
 import Layout from "../components/Layout/Layout";
 import Chart from "../components/Chart/Chart";
 import BestScenarioResults from "../components/BestScenarioResults/BestScenarioResults";
@@ -6,6 +7,7 @@ import KeyIndicatorsPanel from "../components/KeyIndicatorsPanel/KeyIndicatorsPa
 import SlideOver from "../components/SlideOver/SlideOver";
 import VariablesPanel from "../components/VariablesPanel/VariablesPanel";
 import HeaderActions from "../components/HeaderActions/HeaderActions";
+import AppButton from "../components/AppButton/AppButton";
 
 const DashboardPage = () => {
   const [isPanelOpen, setIsPanelOpen] = useState(false);
@@ -35,9 +37,16 @@ const DashboardPage = () => {
             </div>
 
             <div className="flex-[2]">
-              <h2 className="text-xl font-semibold pb-[15px]">
-                Key Performance Indicators
-              </h2>
+              <div className="flex justify-between items-center pb-[15px]">
+                <h2 className="text-xl font-semibold">
+                  Key Performance Indicators
+                </h2>
+                <AppButton
+                  icon={<Plus size={16} />}
+                  label="Variables"
+                  className="w-auto"
+                />
+              </div>
               <KeyIndicatorsPanel />
             </div>
           </div>
