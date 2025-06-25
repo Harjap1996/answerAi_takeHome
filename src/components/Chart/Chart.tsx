@@ -7,6 +7,7 @@ import {
   YAxis,
   Tooltip,
   Area,
+  ResponsiveContainer,
 } from "recharts";
 import CustomYAxisTick from "./CustomYAxisTick";
 import CustomXAxisTick from "./CustomXAxisTick";
@@ -22,46 +23,52 @@ const Chart = () => {
         <Dropdown />
       </div>
 
-      <LineChart width={691} height={340} data={chartData}>
-        <defs>
-          <pattern
-            id="vertical-stripes"
-            width="8"
-            height="8"
-            patternUnits="userSpaceOnUse"
-          >
-            <rect x="0" y="0" width="4" height="8" fill="#333" />
-          </pattern>
-        </defs>
+      <ResponsiveContainer width="100%" height={340}>
+        <LineChart data={chartData}>
+          <defs>
+            <pattern
+              id="vertical-stripes"
+              width="8"
+              height="8"
+              patternUnits="userSpaceOnUse"
+            >
+              <rect x="0" y="0" width="4" height="8" fill="#333" />
+            </pattern>
+          </defs>
 
-        <CartesianGrid stroke="#333" />
-        <XAxis dataKey="name" stroke="#aaa" tick={CustomXAxisTick} />
-        <YAxis stroke="#aaa" tick={CustomYAxisTick} domain={["auto", "auto"]} />
-        <Tooltip content={<CustomTooltip />} cursor={<CustomCursor />} />
+          <CartesianGrid stroke="#333" />
+          <XAxis dataKey="name" stroke="#aaa" tick={CustomXAxisTick} />
+          <YAxis
+            stroke="#aaa"
+            tick={CustomYAxisTick}
+            domain={["auto", "auto"]}
+          />
+          <Tooltip content={<CustomTooltip />} cursor={<CustomCursor />} />
 
-        <Area
-          type="linear"
-          dataKey="value"
-          stroke="none"
-          fill="url(#vertical-stripes)"
-          baseLine={0}
-          fillOpacity={1}
-        />
-        <Line
-          type="linear"
-          dataKey="value"
-          stroke="#C8E972"
-          strokeWidth={2}
-          dot={{ r: 6, stroke: "#C8E972", strokeWidth: 3, fill: "#222324" }}
-          activeDot={{
-            r: 8,
-            stroke: "#C8E972",
-            strokeWidth: 3,
-            fill: "#222324",
-            filter: "drop-shadow(0 0 4px #C8E972)",
-          }}
-        />
-      </LineChart>
+          <Area
+            type="linear"
+            dataKey="value"
+            stroke="none"
+            fill="url(#vertical-stripes)"
+            baseLine={0}
+            fillOpacity={1}
+          />
+          <Line
+            type="linear"
+            dataKey="value"
+            stroke="#C8E972"
+            strokeWidth={2}
+            dot={{ r: 6, stroke: "#C8E972", strokeWidth: 3, fill: "#222324" }}
+            activeDot={{
+              r: 8,
+              stroke: "#C8E972",
+              strokeWidth: 3,
+              fill: "#222324",
+              filter: "drop-shadow(0 0 4px #C8E972)",
+            }}
+          />
+        </LineChart>
+      </ResponsiveContainer>
     </div>
   );
 };

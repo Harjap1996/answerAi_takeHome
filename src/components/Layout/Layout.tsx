@@ -2,11 +2,13 @@ import Sidebar from "../Sidebar/Sidebar";
 import Topbar from "../Topbar/Topbar";
 
 const Layout = ({ children }: { children: React.ReactNode }) => (
-  <div className="flex h-screen w-screen bg-neutral-900 text-white">
+  <div className="min-h-screen bg-neutral-900 flex text-white">
     <Sidebar />
     <div className="flex flex-col flex-1">
       <Topbar />
-      <main className="flex-1 p-6">{children}</main>
+      <div className="flex-1 max-w-[1440px] min-w-[1200px] mt-5 px-6">
+        {children}
+      </div>
     </div>
   </div>
 );

@@ -1,4 +1,4 @@
-import KpiCard from "./kpiCard";
+import KpiCard from "./KpiCard";
 
 const KeyIndicatorsPanel = () => {
   const kpis = [
@@ -25,7 +25,7 @@ const KeyIndicatorsPanel = () => {
   ];
 
   return (
-    <div className="grid grid-cols-2 gap-6">
+    <div className="grid grid-cols-2 gap-4 w-full">
       {kpis.map((kpi, index) => (
         <KpiCard
           key={index}
