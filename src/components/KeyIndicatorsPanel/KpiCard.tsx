@@ -5,7 +5,7 @@ type KpiCardProps = {
 };
 
 const KpiCard = ({ label, description, value }: KpiCardProps) => (
-  <div className="w-[241px] h-[214px] rounded-[5px] p-[30px] border-[1px] border-[#525252] bg-[#222324] flex flex-col justify-between">
+  <div className="w-full h-[214px] rounded-[5px] p-[30px] border-[1px] border-[#525252] bg-[#222324] flex flex-col justify-between">
     <div className="flex justify-between items-start">
       <div className="font-sans font-medium text-[18px] leading-none text-white">
         {label}
