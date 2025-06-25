@@ -6,7 +6,7 @@ type VariableSectionProps = {
     variables: {
       label: string;
       selected: boolean;
-      toggleVariable: () => void;
+      onClick: () => void;
       onHoverStart?: (label: string) => void;
       onHoverEnd?: () => void;
     }[];
@@ -28,7 +28,7 @@ const VariableSection = ({ categories }: VariableSectionProps) => {
                 key={i}
                 label={variable.label}
                 selected={variable.selected}
-                onClick={variable.toggleVariable}
+                onClick={variable.onClick}
                 onHoverStart={variable.onHoverStart}
                 onHoverEnd={variable.onHoverEnd}
               />

@@ -1,7 +1,10 @@
 import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { X } from "lucide-react";
 import { Sparkles } from "lucide-react";
 import { RotateCw } from "lucide-react";
+import { type RootState } from "../../redux/store";
+import { toggleVariable } from "../../redux/slices/variableSlice";
 import VariableSection from "./VariableSection";
 import AppButton from "../AppButton/AppButton";
 import SearchInput from "../SearchInput/SearchInput";
@@ -14,61 +17,18 @@ type VariablesPanelProps = {
 
 const VariablesPanel = ({ onClose }: VariablesPanelProps) => {
   const [search, setSearch] = useState("");
-  const [variableCategories, setVariableCategories] = useState([
-    {
-      title: "Variable Category 1",
-      variables: [
-        { label: "Carbon 1", selected: false, description: "fff" },
-        {
-          label: "Co2 Distribution",
-          selected: true,
-          description:
-            "But what truly sets Switch apart is its versatility. It can be used as a scooter, a bike, or even a skateboard, making it suitable for people of all ages. Whether you're a student, a professional, or a senior citizen, Switch adapts to your needs and lifestyle.",
-        },
-        { label: "Fleet sizing", selected: true, description: "sffsf" },
-      ],
-    },
-    {
-      title: "Variable Category 2",
-      variables: [
-        { label: "Parking Rate", selected: false, description: "" },
-        { label: "Border Rate", selected: true, description: "" },
-        { label: "Border Rate", selected: true, description: "" },
-        { label: "Border Rate", selected: true, description: "" },
-        { label: "Border Rate", selected: true, description: "" },
-      ],
-    },
-    {
-      title: "Variable Category 3",
-      variables: [
-        { label: "Variable 1", selected: true, description: "" },
-        { label: "Variable 2", selected: false, description: "" },
-      ],
-    },
-  ]);
+  const dispatch = useDispatch();
+  const variableCategories = useSelector(
+    (state: RootState) => state.variables.categories
+  );
+
   const [hoveredDescription, setHoveredDescription] = useState<{
     label: string;
     text: string;
   } | null>(null);
 
-  const toggleVariable = (categoryIndex: number, variableIndex: number) => {
-    setVariableCategories((prevCategories) => {
-      const updatedCategories = [...prevCategories];
-      const category = updatedCategories[categoryIndex];
-      const updatedVariables = [...category.variables];
-
-      updatedVariables[variableIndex] = {
-        ...updatedVariables[variableIndex],
-        selected: !updatedVariables[variableIndex].selected,
-      };
-
-      updatedCategories[categoryIndex] = {
-        ...category,
-        variables: updatedVariables,
-      };
-
-      return updatedCategories;
-    });
+  const handleToggle = (categoryIndex: number, variableIndex: number) => {
+    dispatch(toggleVariable({ categoryIndex, variableIndex }));
   };
 
   return (
@@ -116,8 +76,7 @@ const VariablesPanel = ({ onClose }: VariablesPanelProps) => {
                   text: variable.description,
                 }),
               onHoverEnd: () => setHoveredDescription(null),
-
-              toggleVariable: () => toggleVariable(catIndex, varIndex),
+              onClick: () => handleToggle(catIndex, varIndex),
             })),
           }))}
         />
